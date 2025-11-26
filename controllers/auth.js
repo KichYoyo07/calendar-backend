@@ -28,7 +28,7 @@ const crearUsuario = async (req, res = response) => {
         if (usuario) {
             return res.status(400).json({
                 ok: false,
-                msg: 'Un usuario existe con ese correo',
+                msg: 'Ya existe un usuario registrado con ese correo',
             });
         }
         usuario = new Usuario(req.body);
@@ -107,6 +107,8 @@ const revalidarToken = async (req, res = response) => {
 
     res.json({
         ok: true,
+        uid,
+        name,
         token,
     });
 };
